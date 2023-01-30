@@ -18,6 +18,7 @@ public class GestorBBDD {
 	public static void insertarLibro(String Libro){
 		
 	}
+	/* Sirve para Eliminar las cosas */
 	public void eliminarLibro(){
 			int id=Integer.parseInt(JOptionPane.showInputDialog(null, "Inserte la id del libro a eliminar"));
 
@@ -55,11 +56,4 @@ public class GestorBBDD {
 	public static void getLibro(){
 		
 	}
-	public void run() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
-	
 }
