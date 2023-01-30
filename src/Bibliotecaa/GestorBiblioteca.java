@@ -8,8 +8,9 @@ public class GestorBiblioteca {
 	
 
 	public static void main(String[] args) throws FileNotFoundException, ClassNotFoundException, SQLException {
-		GestorBBDD gf = new GestorBBDD();
-		gf.run();
+		Menu gh = new Menu();
+		gh.run();
+		
 	}
 }
 

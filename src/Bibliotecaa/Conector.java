@@ -11,6 +11,7 @@ public class Conector {
 	private Connection con;
 	
 	public void conectar(){
+		
 		try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             
