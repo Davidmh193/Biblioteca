@@ -19,7 +19,7 @@ public class GestorBBDD {
 		
 	}
 	/* Sirve para Eliminar las cosas */
-	public void eliminarLibro(){
+	public static void eliminarLibro(){
 			int id=Integer.parseInt(JOptionPane.showInputDialog(null, "Inserte la id del libro a eliminar"));
 
 			Libro eliminar = new Libro();
@@ -31,7 +31,7 @@ public class GestorBBDD {
 			}
 		}
 
-		private boolean eliminarDelaBBDD(int id) {
+		private static boolean eliminarDelaBBDD(int id) {
 			try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
 				Connection conexion = DriverManager.getConnection("jdbc:mysql://" + HOST + "/" + BBDD, USERNAME, PASSWORD);
