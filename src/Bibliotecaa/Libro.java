@@ -3,16 +3,16 @@ package Bibliotecaa;
 public class Libro {
 	private String titulo;
 	private String autor;
-	private String num_pag;
-	private int id;
+	private int num_pag;
+	private String id;
 	
 	
 	
-	public  int getId() {
+	public  String getId() {
 		return id;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setId(String string) {
+		this.id = string;
 	}
 	public String getTitulo() {
 		return titulo;
@@ -26,10 +26,10 @@ public class Libro {
 	public void setAutor(String autor) {
 		this.autor = autor;
 	}
-	public String getNum_pag() {
+	public int getNum_pag() {
 		return num_pag;
 	}
-	public void setNum_pag(String num_pag) {
-		this.num_pag = num_pag;
+	public void setNum_pag(int i) {
+		this.num_pag = i;
 	}
 }

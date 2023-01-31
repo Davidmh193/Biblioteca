@@ -8,19 +8,21 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 
-public class GestorBBDD {
+public class GestorBBDD extends Conector{
 	private static final String HOST = "localhost";
 	private static final String BBDD = "biblioteca";
 	private static final String USERNAME = "root";
 	private static final String PASSWORD = "";
 	
-	Conector conector = new Conector();
 	public static void insertarLibro(String Libro){
-		
+	FormularioDeDatos.modificarDatosLibros();
+	
+	
+	
 	}
 	/* Sirve para Eliminar las cosas */
 	public static void eliminarLibro(){
-			int id=Integer.parseInt(JOptionPane.showInputDialog(null, "Inserte la id del libro a eliminar"));
+			String id=JOptionPane.showInputDialog(null, "Inserte la id del libro a eliminar");
 
 			Libro eliminar = new Libro();
 			eliminar.setId(id);			
@@ -31,14 +33,14 @@ public class GestorBBDD {
 			}
 		}
 
-		private static boolean eliminarDelaBBDD(int id) {
+		private static boolean eliminarDelaBBDD(String id) {
 			try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
 				Connection conexion = DriverManager.getConnection("jdbc:mysql://" + HOST + "/" + BBDD, USERNAME, PASSWORD);
 
-				String sql = "DELETE FROM biblioteca WHERE id = ?";
+				String sql = "DELETE FROM libros WHERE id = ?";
 				PreparedStatement pst = conexion.prepareStatement(sql);
-				pst.setInt(1, id);
+				pst.setString(1, id);
 				pst.execute();
 				return true;
 
@@ -55,5 +57,7 @@ public class GestorBBDD {
 	
 	public static void getLibro(){
 		
+		
 	}
+	
 }
