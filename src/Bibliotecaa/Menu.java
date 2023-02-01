@@ -18,7 +18,7 @@ int opcion_menu;
 do {
 	opcion_menu = Integer.parseInt(JOptionPane.showInputDialog(null,
 			"------MENU-------\n" + OPCION_UNO + ". Gestionar Libros\n" + OPCION_DOS + ". Gestionar socios\n" + OPCION_TRES
-					+ ". Gestionar Prestamos\n" + SALIR + ". Salir\n" + "Elije una de las opciones"));
+					+ ". Gestionar Prestamos\n" + SALIR + ". Salir del progama\n" + "Elije una de las opciones"));
 	//fin menú
 	switch (opcion_menu) {
 	case OPCION_UNO:
@@ -38,7 +38,7 @@ do {
 		JOptionPane.showMessageDialog(null, "Adios");
 		break;
 	default:
-		JOptionPane.showMessageDialog(null, "Opcion incorrecta");
+		JOptionPane.showMessageDialog(null, "Opcion incorrecta, Vuelve a introducir");
 	}
 } while (opcion_menu != SALIR);
 }
@@ -53,31 +53,30 @@ int opcion_menu;
 do {
 	opcion_menu = Integer.parseInt(JOptionPane.showInputDialog(null,
 			"------MENU-------\n" + OPCION_UNO + ". Insertar Libro\n" + OPCION_DOS + ". Eliminar Libro\n" + OPCION_TRES
-					+ ". Ver libros\n" + SALIR + ". Salir De Mostrar Libros\n" + "Elije una de las opciones"));
+					+ ". Modificar libros\n" + SALIR + ". Salir De Mostrar Libros\n" + "Elije una de las opciones"));
 	
 	switch (opcion_menu) {
 	
-//Insertar Los libros
+//Insertar Los libros "HECHO"
 	case OPCION_UNO:
 		FormularioDeDatos.insertarLibro(null);
 		break;
 		
-//Elimina los libros
+//Elimina los libros "HECHO"
 	case OPCION_DOS:
-		
 		GestorBBDD.eliminarLibro();
 		break;
 		
-//Ver Libros
+//Modifica los libros "HECHO"
 	case OPCION_TRES:
-		
+		GestorBBDD.modificarLibros();
 		break;
 	
 	case SALIR:
-		JOptionPane.showMessageDialog(null, "Adios");
+		JOptionPane.showMessageDialog(null, "Saliendo de menu de Libros");
 		break;
 	default:
-		JOptionPane.showMessageDialog(null, "Opcion incorrecta");
+		JOptionPane.showMessageDialog(null, "Opcion incorrecta, Vuelve a introducir");
 	}
 } while (opcion_menu != SALIR);
 }

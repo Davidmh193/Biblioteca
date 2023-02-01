@@ -71,7 +71,7 @@ public class FormularioDeDatos {
 		libro.setNum_pag(Integer.parseInt(JOptionPane.showInputDialog(null, "Introduce el Numero de paginas del Libro")));
 		
 		if (modificarEnLaBBDDLibro(libro)) {
-			System.out.println("Arbol modificado");
+			System.out.println("Libro modificado");
 		}else {
 			System.out.println("Error al modificar");
 		}
@@ -82,12 +82,13 @@ public class FormularioDeDatos {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://" + HOST + "/" + BBDD, USERNAME, PASSWORD);
 
-			String sql = "UPDATE libros SET id=?, titulo=?, autor=?, num_pag=?";
+			String sql = "UPDATE libros SET titulo=?, autor=?, num_pag=? WHERE id=?";
 			PreparedStatement pst = conexion.prepareStatement(sql);
-			pst.setString(1, libro.getId());
-			pst.setString(2, libro.getAutor());
-			pst.setString(3, libro.getTitulo());
-			pst.setInt(4, libro.getNum_pag());
+			
+			pst.setString(1, libro.getAutor());
+			pst.setString(2, libro.getTitulo());
+			pst.setInt(3, libro.getNum_pag());
+			pst.setString(4, libro.getId());
 			pst.execute();
 			return true;
 
@@ -103,7 +104,41 @@ public class FormularioDeDatos {
 	}
 	
 		public static void getLibro(){
-	
+			//impelementar Arraylist de Visor
 			
 		}
+		public static void eliminarLibro(){
+			String id=JOptionPane.showInputDialog(null, "Inserte la id del libro a eliminar");
+
+			Libro eliminar = new Libro();
+			eliminar.setId(id);			
+			if (eliminarDelaBBDD(id)) {
+				System.out.println("Eliminado correctamente");
+			} else {
+				System.out.println("Error en la eliminacion");
+			}
+		}
+
+		private static boolean eliminarDelaBBDD(String id) {
+			try {
+				Class.forName("com.mysql.cj.jdbc.Driver");
+				Connection conexion = DriverManager.getConnection("jdbc:mysql://" + HOST + "/" + BBDD, USERNAME, PASSWORD);
+
+				String sql = "DELETE FROM libros WHERE id = ?";
+				PreparedStatement pst = conexion.prepareStatement(sql);
+				pst.setString(1, id);
+				pst.execute();
+				return true;
+
+			} catch (ClassNotFoundException e) {
+				System.out.println("Driver no cargado, falta el jar");
+				e.printStackTrace();
+				return false;
+			} catch (SQLException e) {
+				System.out.println("Fallo en la conexion");
+				e.printStackTrace();
+				return false;
+			}
+		}
+	
 }
