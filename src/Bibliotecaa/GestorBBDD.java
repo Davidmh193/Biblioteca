@@ -55,9 +55,9 @@ public class GestorBBDD extends Conector{
 			}
 		}
 	
-	public static void getLibro(){
+	public static void VerLibro(){
 		
-		
+		//impelementar Arraylist de Visor
 	}
 	
 }

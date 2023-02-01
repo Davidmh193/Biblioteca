@@ -12,19 +12,55 @@ public class FormularioDeDatos {
 	private static final String BBDD = "biblioteca";
 	private static final String USERNAME = "root";
 	private static final String PASSWORD = "";
+	
+	
 	public static void insertarLibro(String Libro){
-		String id;
-		String titulo;
-		String autor;
-		int num_pag;
+		Libro libro=  new Libro();
+		libro.setId(JOptionPane.showInputDialog(null, "Introduce el id del Libro"));
 		
-		id=JOptionPane.showInputDialog(null, "Introduce el Libro");
-		titulo= JOptionPane.showInputDialog(null, "Introduce el titulo");
-		autor= JOptionPane.showInputDialog(null, "Introduce el autor");
-		num_pag= Integer.parseInt(JOptionPane.showInputDialog(null, "Introduce el numero de paginas que posee")); 	
+		libro.setTitulo(JOptionPane.showInputDialog(null, "Introduce el Titulo del Libro"));
+		libro.setAutor(JOptionPane.showInputDialog(null, "Introduce el Autor del Libro"));
+		libro.setNum_pag(Integer.parseInt(JOptionPane.showInputDialog(null, "Introduce el Numero de paginas del Libro")));
 		
+		try {
+			if (insertarEnLaBBDD(libro)) {
+				System.out.println("Libro insertado");
+			} else {
+				System.out.println("Error al insertar");
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}	private static boolean insertarEnLaBBDD(Libro libro) {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection conexion = DriverManager.getConnection("jdbc:mysql://" + HOST + "/" + BBDD, USERNAME, PASSWORD);
+
+			String sql = "INSERT INTO libros(id, titulo, autor, num_pag) VALUES (?, ?, ?, ?)";
+			PreparedStatement pst = conexion.prepareStatement(sql);
+			pst.setString(1, libro.getId());
+			pst.setString(2, libro.getAutor());
+			pst.setString(3, libro.getTitulo());
+			pst.setInt(4, libro.getNum_pag());
+			pst.execute();
+			return true;
 		
+
+		} catch (ClassNotFoundException e) {
+			System.out.println("Driver no cargado, falta el jar");
+			e.printStackTrace();
+			return false;
+		} catch (SQLException e) {
+			System.out.println("Fallo en la conexion");
+			e.printStackTrace();
+			return false;
+		}
+
 	}
+
+	
 	
 	public static void modificarDatosLibros() {
 		Libro libro=  new Libro();

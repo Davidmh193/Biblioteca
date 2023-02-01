@@ -59,7 +59,7 @@ do {
 	
 //Insertar Los libros
 	case OPCION_UNO:
-		GestorBBDD.insertarLibro(null);
+		FormularioDeDatos.insertarLibro(null);
 		break;
 		
 //Elimina los libros
@@ -68,9 +68,9 @@ do {
 		GestorBBDD.eliminarLibro();
 		break;
 		
-//Get Libros
+//Ver Libros
 	case OPCION_TRES:
-		GestorBBDD.getLibro();
+		
 		break;
 	
 	case SALIR:
@@ -90,7 +90,7 @@ public static void mostrarSocios() {
 	}
 
 public static void mostrarMenuPrestamos() {
-	JOptionPane.showInputDialog(null, "Elija la opcion \n 1.Realizar prestamo");
+
 	}
 
 
