@@ -1,11 +1,13 @@
 package Bibliotecaa;
 
+import java.sql.SQLException;
+
 import javax.swing.JOptionPane;
 
 
 public class Menu {
 	
-public static void menuPrincial(){
+public static void menuPrincial() throws SQLException{
 	
 
 	
@@ -42,18 +44,19 @@ do {
 	}
 } while (opcion_menu != SALIR);
 }
-public static void mostrarMenuLibros() {
+public static void mostrarMenuLibros() throws SQLException {
 	
 final int OPCION_UNO = 1;
 final int OPCION_DOS = 2;
 final int OPCION_TRES = 3;
+final int OPCION_CUATRO = 4;
 final int SALIR = 0;
 int opcion_menu;
 
 do {
 	opcion_menu = Integer.parseInt(JOptionPane.showInputDialog(null,
 			"------MENU-------\n" + OPCION_UNO + ". Insertar Libro\n" + OPCION_DOS + ". Eliminar Libro\n" + OPCION_TRES
-					+ ". Modificar libros\n" + SALIR + ". Salir De Mostrar Libros\n" + "Elije una de las opciones"));
+					+ ". Modificar libros\n" +OPCION_CUATRO+ " Ver Todos los libros De la BDD\n"+ SALIR + ". Salir De Mostrar Libros\n" + "Elije una de las opciones"));
 	
 	switch (opcion_menu) {
 	
@@ -70,6 +73,9 @@ do {
 //Modifica los libros "HECHO"
 	case OPCION_TRES:
 		GestorBBDD.modificarLibros();
+		break;
+	case OPCION_CUATRO:
+		Visor.imprimirLibrosEnPantalla(null);
 		break;
 	
 	case SALIR:
@@ -96,7 +102,7 @@ public static void mostrarMenuPrestamos() {
 
 
 //Sirve para que funcione el programa
- public void run() {
+ public void run() throws SQLException {
 	 menuPrincial();
 }
 }

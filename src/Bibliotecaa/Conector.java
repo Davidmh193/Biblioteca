@@ -12,7 +12,7 @@ public class Conector {
 	
 	protected Connection con;
 	
-	public void conectar(){
+	public  void conectar(){
 		
 		try {
             Class.forName("com.mysql.cj.jdbc.Driver");
