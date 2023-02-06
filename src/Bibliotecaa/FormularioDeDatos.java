@@ -1,9 +1,11 @@
 package Bibliotecaa;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
@@ -139,6 +141,18 @@ public class FormularioDeDatos {
 				e.printStackTrace();
 				return false;
 			}
+		}
+		public static Prestamo getDatosDePrestamo(Scanner scan) {
+			Prestamo prestamo = new Prestamo();
+			System.out.println("Intdoduce un id de Libro");
+			prestamo.setId_libro(scan.nextLine());
+
+			System.out.println("Intdoduce un id de socio");
+			prestamo.setId_socio(scan.nextLine());
+			
+			prestamo.setFecha(new Date(0));
+			prestamo.setDevuelvo(false); 
+			return prestamo;
 		}
 	
 }

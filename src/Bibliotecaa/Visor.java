@@ -48,8 +48,6 @@ public class Visor {
 		}
 	}
 	
-	
-	
 	private ArrayList<Libro> selectDeLaBBDD() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");

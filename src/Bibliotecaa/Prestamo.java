@@ -1,10 +1,12 @@
 package Bibliotecaa;
 
+import java.sql.Date;
+
 public class Prestamo {
 	private String id_libro;
 	private String id_socio;
-	private String fecha;
-	private String devuelvo;
+	private Date fecha;
+	private boolean devuelvo;
 	
 	public String getId_libro() {
 		return id_libro;
@@ -18,17 +20,17 @@ public class Prestamo {
 	public void setId_socio(String id_socio) {
 		this.id_socio = id_socio;
 	}
-	public String getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
-	public void setFecha(String fecha) {
-		this.fecha = fecha;
+	public void setFecha(Date date) {
+		this.fecha = date;
 	}
-	public String getDevuelvo() {
+	public boolean getDevuelvo() {
 		return devuelvo;
 	}
-	public void setDevuelvo(String devuelvo) {
-		this.devuelvo = devuelvo;
+	public void setDevuelvo(boolean b) {
+		this.devuelvo = b;
 	}
 	
 }
